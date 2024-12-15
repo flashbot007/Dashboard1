@@ -8,9 +8,20 @@ const app = express();
 
 // Connect to MongoDB
 connectDB();
+
+const allowedOrigins = [
+  "http://localhost:5173", // Local frontend
+  "https://dashboard121.netlify.app/", // Deployed frontend
+];
 app.use(
   cors({
-    origin: "http://localhost:5173", // Replace with your frontend's URL
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    }, 
     credentials: true, // Allow cookies to be sent
   })
 );
