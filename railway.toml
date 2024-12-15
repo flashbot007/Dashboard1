@@ -1,0 +1,8 @@
+[build]
+  buildCommand = "cd backend && npm install && npm run build"
+
+[deploy]
+  deployCommand = "cd backend && npm start"
+
+[service]
+  entryPoint = "backend/app.js"  
