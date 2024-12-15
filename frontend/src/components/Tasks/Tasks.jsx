@@ -13,7 +13,7 @@ const Tasks = () => {
   // Fetch tasks from backend
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks");
+      const response = await axios.get("https://dashboard1-cg7c.onrender.com/api/tasks");
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -24,7 +24,7 @@ const Tasks = () => {
   const addTask = async () => {
     if (!newTaskName.trim()) return;
     try {
-      await axios.post("http://localhost:5000/api/addtasks", {
+      await axios.post("https://dashboard1-cg7c.onrender.com/api/addtasks", {
         task_name: newTaskName,
       });
       setNewTaskName("");
@@ -38,7 +38,7 @@ const Tasks = () => {
   // Update task (completed and important)
   const updateTask = async (id, data) => {
     try {
-      await axios.put(`http://localhost:5000/api/updatetasks/${id}`, data);
+      await axios.put(`https://dashboard1-cg7c.onrender.com/api/updatetasks/${id}`, data);
       fetchTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -50,7 +50,7 @@ const Tasks = () => {
     console.log(tasks);
     console.log(id);
     try {
-      await axios.delete(`http://localhost:5000/api/deletetasks/${id}`);
+      await axios.delete(`https://dashboard1-cg7c.onrender.com/api/deletetasks/${id}`);
       fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -72,7 +72,9 @@ const Tasks = () => {
   // console.log(newTaskName)
 
   useEffect(() => {
-    fetchTasks();
+    setInterval(() => {
+      fetchTasks();
+    }, 10);
   }, []);
 
   return (

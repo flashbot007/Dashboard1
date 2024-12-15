@@ -1,8 +1,10 @@
 const express = require('express');
+const dotenv = require('dotenv')
+dotenv.config();
 const connectDB = require('./config/db'); // Import DB connection
 const taskRoutes = require('./routes/taskRoutes');
 const cors = require('cors')
-const app = express();
+const app = express(); 
 
 // Connect to MongoDB
 connectDB();
@@ -19,5 +21,5 @@ app.use('/api', taskRoutes); // Use task routes under /api path
 
 // Start the server
 app.listen(5000, () => {
-  console.log('Server running on http://localhost:5000');
+  console.log('Server running on https://dashboard1-cg7c.onrender.com');
 });
