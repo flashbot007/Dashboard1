@@ -11,7 +11,7 @@ connectDB();
 
 const allowedOrigins = [
   "http://localhost:5173", // Local frontend
-  "https://dashboard121.netlify.app/", // Deployed frontend
+  "https://dashboard121.netlify.app", // Deployed frontend
 ];
 app.use(
   cors({
